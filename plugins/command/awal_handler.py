@@ -18,10 +18,7 @@ async def start_handler(client: Client, msg: types.Message):
         else '@Callme99i'
     )
     mention = msg.from_user.mention
-    buttons = InlineKeyboardMarkup([
-            [InlineKeyboardButton('shin', url='https://t.me/ohmyshinxD')],
-            [InlineKeyboardButton('panjul', url='https://t.me/vxnjul')]
-        ])
+    buttons = [[InlineKeyboardButton("panjul", url="https://t.me/vxnjul")]]
     await msg.reply_text(
         text=config.start_msg.format(
             id=msg.from_user.id,
