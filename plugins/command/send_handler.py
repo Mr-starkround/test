@@ -31,7 +31,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
-        await msg.reply(f"📤Pesanmu telah terkirim {mention}. \nHari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . Kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nWaktu reset setiap jam 1 pagi\n<a href='{link + str(kirim.id)}'>Lihat postinganmu</a>")
+        await msg.reply(f"📤Pesanmu telah terkirim {mention}. \nHari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . Kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nWaktu reset setiap jam 1 pagi\n<a href='{link + str(kirim.id)}'>💌Lihat postinganmu</a>")
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
@@ -65,7 +65,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
-        await msg.reply(f"pesan telah berhasil terkirim. hari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nwaktu reset setiap jam 1 pagi\n\n<a href='{link + str(kirim.id)}'>Lihat postinganmu</a>")
+        await msg.reply(f"pesan telah berhasil terkirim. hari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nwaktu reset setiap jam 1 pagi\n\n<a href='{link + str(kirim.id)}'>💌Lihat postinganmu</a>")
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
