@@ -105,11 +105,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
-    db = Database(msg.from_user.id)
-    member = db.get_data_pelanggan()
-    pesan = "Silahkan gunakan format berikut untuk mengirim pesan\n"
-    pesan += '• #mba [ untuk identitas perempuan] \n• #mas [ untuk identitas laki-laki ] \n• #spill [ untuk spill masalah ] \n• #tanya [ untuk bertanya ] \n• #story [ untuk berbagi cerita/curhat ] \n• #pap [ khusus media foto/video ] \n'
-    if member.status == 'admin':
+    if user_id:
         pesan += '\nHanya Admin\n'
         pesan += '/tf_coin — transfer coin\n'
         pesan += '/settings — melihat settingan bot\n'
@@ -118,7 +114,6 @@ async def cb_help(client, callback_query):
         pesan += 'Perintah banned\n'
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
-    if member.status == 'owner':
         pesan += '\n=====OWNER COMMAND=====\n'
         pesan += '/tf_coin — transfer coin\n'
         pesan += '/settings — melihat settingan bot\n'
