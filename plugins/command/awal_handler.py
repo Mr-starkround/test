@@ -116,6 +116,15 @@ async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
     await callback_query.edit_message_text(
         f"""
-<b>Ini Adalah Menu Help</b>
+<b>silahkan kirim pesan anda menggunakan hashtag:</b>
+
+• #mba [ untuk identitas perempuan]
+• #mas [ untuk identitas laki-laki ]
+• #spill [ untuk spill masalah ]
+• #tanya [ untuk bertanya ]
+• #story [ untuk berbagi cerita/curhat ]
+• #pap [ khusus media foto/video ]
+
+<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk vxnjul.t.me</code>
 """
     )
