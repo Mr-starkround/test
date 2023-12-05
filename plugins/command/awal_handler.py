@@ -114,6 +114,16 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "Tutup", callback_data="ttp"
+            ),
+            InlineKeyboardButton(
+                "Rules", url="https://t.me/jawafes/9"
+            ),
+        ],
+    ]
     await callback_query.edit_message_text(
         f"""
 <b>silahkan kirim pesan anda menggunakan hashtag:</b>
@@ -125,6 +135,12 @@ async def cb_help(client, callback_query):
 • #story [ untuk berbagi cerita/curhat ]
 • #pap [ khusus media foto/video ]
 
-<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk vxnjul.t.me</code>
-"""
+<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk @vxnjul</code>
+""",
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
     )
+
+
+async def cb_close(client, callback_query):
+    await callback_query.message.delete()
