@@ -18,7 +18,7 @@ async def start_handler(client: Client, msg: types.Message):
         else '@Callme99i'
     )
     mention = msg.from_user.mention
-    buttons = [[InlineKeyboardButton("panjul", url="https://t.me/vxnjul")]]
+    buttons = [[InlineKeyboardButton("Help", callback_data="nsj")]]
     await msg.reply_text(
         text=config.start_msg.format(
             id=msg.from_user.id,
@@ -103,7 +103,8 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         fullname = await anu.escapeHTML(fullname)
     ), True, enums.ParseMode.HTML, disable_web_page_preview=True)
 
-async def help_handler(client, msg):
+async def cb_help(client, callback_query):
+    user_id = callback_query.from_user.id
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
     pesan = "Silahkan gunakan format berikut untuk mengirim pesan\n"
@@ -141,4 +142,4 @@ async def help_handler(client, msg):
         pesan += '\n=====BANNED COMMAND=====\n'
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
-    await msg.reply(pesan, True)
+    await callback_query.edit_message_text(pesan, True)
