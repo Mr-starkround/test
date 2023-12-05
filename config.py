@@ -36,16 +36,17 @@ biaya_gfrent = int(os.environ.get("BIAYA_GFRENT", "40"))
 biaya_bfrent = int(os.environ.get("BIAYA_BFRENT", "30"))
 # =========================================================== #
 
-hastag = os.environ.get("HASTAG", "#mas #mba #spill #tanya #story #pap").replace(" ", "|").lower()
+hastag = os.environ.get("HASTAG", "#mas #mba #spill #tanya #story").replace(" ", "|").lower()
 # =========================================================== #
 
 pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @Jawafes. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
 start_msg = os.environ.get("START_MSG", """
 ❏ Haii {mention}
-Anda harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES. 
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
 
-Silakan Join Ke Channel & Group dulu ⤵️""")
+<b>silahkan baca help dan rules terlebih dahulu</b>""")
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
-❌ Pesanmu gagal terkirim {mention}, silahkan baca <a href="https://t.me/JAWAFES/10">help</a> untuk menggunakan bot ini
+🙅‍♂️Pesanmu gagal terkirim.
+silahkan baca untuk menggunakan bot ini
 """)
