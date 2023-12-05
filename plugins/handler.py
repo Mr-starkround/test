@@ -190,7 +190,7 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await photo_handler_inline(client, query)
     elif query.data == 'video':
         await video_handler_inline(client, query)
-    elif query.sata == 'nsj':
+    elif query.data == 'nsj':
         await ch_help(client, query)
     elif query.data == 'voice':
         await voice_handler_inline(client, query)
