@@ -6,28 +6,34 @@ from pyrogram.types import *
 from pyrogram import Client, types, enums
 from plugins import Helper, Database
 
+
 async def start_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     first = msg.from_user.first_name
     last = msg.from_user.last_name
-    fullname = first if not last else first + ' ' + last
-    username = '@vxnjul' if not msg.from_user.username else '@' + msg.from_user.username
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@Callme99i'
+    )
     mention = msg.from_user.mention
-    buttons = [
-            [InlineKeyboardButton("njul", url="https://t.me/vxnjul"],
-        ]
+    buttons = InlineKeyboardMarkup([
+            [InlineKeyboardButton('shin', url='https://t.me/ohmyshinxD')],
+            [InlineKeyboardButton('panjul', url='https://t.me/vxnjul')]
+        ])
     await msg.reply_text(
-        text = config.start_msg.format(
-            id = msg.from_user.id,
-            mention = mention,
-            username = username,
-            first_name = await helper.escapeHTML(first),
-            last_name = await helper.escapeHTML(last),
-            fullname = await helper.escapeHTML(fullname),
-            ),
-        disable_web_page_preview = True,
-        quote = True
-        reply_markup = InlineKeyboardMarkup(buttons)
+        text=config.start_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
     )
 
 async def status_handler(client: Client, msg: types.Message):
