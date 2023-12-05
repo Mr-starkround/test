@@ -15,7 +15,7 @@ async def start_handler(client: Client, msg: types.Message):
     username = (
         f'@{msg.from_user.username}'
         if msg.from_user.username
-        else '@Callme99i'
+        else '@vxnjul'
     )
     mention = msg.from_user.mention
     buttons = [
@@ -133,9 +133,8 @@ async def cb_help(client, callback_query):
 • #spill [ untuk spill masalah ]
 • #tanya [ untuk bertanya ]
 • #story [ untuk berbagi cerita/curhat ]
-• #pap [ khusus media foto/video ]
 
-<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk @vxnjul</code>
+<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk {mention} </code>
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
