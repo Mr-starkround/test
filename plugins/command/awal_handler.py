@@ -105,36 +105,8 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
-    if user_id:
-        pesan += '\nHanya Admin\n'
-        pesan += '/tf_coin — transfer coin\n'
-        pesan += '/settings — melihat settingan bot\n'
-        pesan += '/list_admin — melihat list admin\n'
-        pesan += '/list_ban — melihat list banned\n\n'
-        pesan += 'Perintah banned\n'
-        pesan += '/ban — ban user\n'
-        pesan += '/unban — unban user\n'
-        pesan += '\n=====OWNER COMMAND=====\n'
-        pesan += '/tf_coin — transfer coin\n'
-        pesan += '/settings — melihat settingan bot\n'
-        pesan += '/list_admin — melihat list admin\n'
-        pesan += '/list_ban — melihat list banned\n'
-        pesan += '/stats — melihat statistik bot\n'
-        pesan += '/bot — setbot (on|off)\n'
-        pesan += '\n=====FITUR TALENT=====\n'
-        pesan += '/addtalent — menambahkan talent baru\n'
-        pesan += '/addsugar — menambahkan talent daddy sugar\n'
-        pesan += '/addgirl — menambahkan talent moans girl\n'
-        pesan += '/addboy — menambahkan talent moans boy\n'
-        pesan += '/addgf — menambahkan talent girlfriend rent\n'
-        pesan += '/addbf — menambahkan talent boyfriend rent\n'
-        pesan += '/hapus — menghapus talent\n'
-        pesan += '\n=====BROADCAST OWNER=====\n'
-        pesan += '/broadcast — mengirim pesan broadcast kesemua user\n'
-        pesan += '/admin — menambahkan admin baru\n'
-        pesan += '/unadmin — menghapus admin\n'
-        pesan += '/list_ban — melihat list banned\n'
-        pesan += '\n=====BANNED COMMAND=====\n'
-        pesan += '/ban — ban user\n'
-        pesan += '/unban — unban user\n'
-    await callback_query.edit_message_text(pesan, True)
+    await callback_query.edit_message_text(
+        f"""
+<b>Ini Adalah Menu Help</b>
+"""
+    )
