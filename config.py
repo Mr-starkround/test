@@ -40,7 +40,8 @@ hastag = os.environ.get("HASTAG", "#mas #mba #spill #tanya #story #pap").replace
 # =========================================================== #
 
 pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @Jawafes. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
-start_msg = os.environ.get("START_MSG", "Haii {mention}
+start_msg = os.environ.get("START_MSG", "
+❏ Haii {mention}
 <b>silahkan kirim pesan anda menggunakan hashtag:</b>
 
 • #mba [ untuk identitas perempuan]
