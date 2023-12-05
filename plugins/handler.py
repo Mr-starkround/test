@@ -43,10 +43,7 @@ async def on_message(client: Client, msg: Message):
         command = msg.text or msg.caption
         if command != None:
             if command == '/start':  # menampilkan perintah start
-                return await start_handler(client, msg)
-            
-            elif command == '/help':
-                return await help_handler(client, msg)
+                return await start_handler(client, msg)           
 
             elif command == '/status':  # menampilkan perintah status
                 return await status_handler(client, msg)
@@ -193,6 +190,8 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await photo_handler_inline(client, query)
     elif query.data == 'video':
         await video_handler_inline(client, query)
+    elif query.sata == 'nsj':
+        await ch_help(client, query)
     elif query.data == 'voice':
         await voice_handler_inline(client, query)
     elif query.data == 'status_bot':
