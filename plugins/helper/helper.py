@@ -98,7 +98,7 @@ class Helper():
             pesan += f"├ Cek Pesan : <a href='{link}'>Lihat pesan</a>\n"
             pesan += f"└ Waktu -: {self.get_time().full_time}"
         else:
-            pesan = "Jangan Lupa Cek @mahadappa"
+            pesan = "Jangan Lupa Cek @thedark_night"
         await self.bot.send_message(config.channel_log, pesan, enums.ParseMode.HTML, disable_web_page_preview=True)
 
     def formatrupiah(self, uang):
