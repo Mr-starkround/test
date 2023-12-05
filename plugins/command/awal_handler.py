@@ -1,5 +1,8 @@
 import config
 
+from pyrogram.errors import *
+from pyrogram.types import *
+
 from pyrogram import Client, types, enums
 from plugins import Helper, Database
 
@@ -10,6 +13,9 @@ async def start_handler(client: Client, msg: types.Message):
     fullname = first if not last else first + ' ' + last
     username = '@vxnjul' if not msg.from_user.username else '@' + msg.from_user.username
     mention = msg.from_user.mention
+    buttons = [
+            [InlineKeyboardButton("njul", url="https://t.me/vxnjul"],
+        ]
     await msg.reply_text(
         text = config.start_msg.format(
             id = msg.from_user.id,
@@ -21,6 +27,7 @@ async def start_handler(client: Client, msg: types.Message):
             ),
         disable_web_page_preview = True,
         quote = True
+        reply_markup = InlineKeyboardMarkup(buttons)
     )
 
 async def status_handler(client: Client, msg: types.Message):
