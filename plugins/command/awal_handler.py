@@ -26,7 +26,8 @@ async def start_handler(client: Client, msg: types.Message):
             InlineKeyboardButton(
                 "Rules", url="https://t.me/jawafes/9"
             ),
-        ]
+        ],
+    ]
     await msg.reply_text(
         text=config.start_msg.format(
             id=msg.from_user.id,
