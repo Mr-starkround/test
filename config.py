@@ -40,7 +40,7 @@ hastag = os.environ.get("HASTAG", "#mas #mba #spill #tanya #story #pap").replace
 # =========================================================== #
 
 pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @Jawafes. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
-start_msg = os.environ.get("START_MSG", "
+start_msg = os.environ.get("START_MSG", """
 ❏ Haii {mention}
 <b>silahkan kirim pesan anda menggunakan hashtag:</b>
 
@@ -53,7 +53,7 @@ start_msg = os.environ.get("START_MSG", "
 
 <b>Contoh pesan:</b> <code>#mas yang dari jogja. meet yuk {username} </code>
 
-<b>pastikan kamu sudah baca <a href="https://t.me/JAWAFES/9">rules</a> dan <a href="https://t.me/JAWAFES/10">help</a> terlebih dahulu</b>")
+<b>pastikan kamu sudah baca <a href="https://t.me/JAWAFES/9">rules</a> dan <a href="https://t.me/JAWAFES/10">help</a> terlebih dahulu</b>""")
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
 ❌ Pesanmu gagal terkirim {mention}, silahkan baca <a href="https://t.me/JAWAFES/10">help</a> untuk menggunakan bot ini
