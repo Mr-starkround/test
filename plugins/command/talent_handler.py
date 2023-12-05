@@ -10,7 +10,7 @@ async def talent_handler(client: Client, msg: types.Message):
     top_rate = [] # total rate talent
     top_id = [] # id talent
     if len(talent) == 0:
-        return await msg.reply('<b>Saat ini tidak ada talent yang tersedia.Jika kalian minat mempromosikan diri anda menjadi talent di @DuniaVirtualMenfes & @DuniaVirtualMenfessbot silahkan pm @EROR_404_NF .</b>', True, enums.ParseMode.HTML)
+        return await msg.reply('<b>Astagfirulloh tobat bro</b>', True, enums.ParseMode.HTML)
     else:
         for uid in talent:
             rate = talent[str(uid)]['rate']
@@ -19,7 +19,7 @@ async def talent_handler(client: Client, msg: types.Message):
                 top_id.append(uid)
         top_rate.sort(reverse=True)
         pesan = "<b>Daftar Talent Fwb</b>\n\n"
-        pesan += "Jika kalian minat mempromosikan diri anda menjadi talent di @DuniaVirtualMenfes & @DuniaVirtualMenfessbot silahkan pm @EROR_404_NF\n"
+        pesan += "Utek selangkangan tok\n"
         pesan += "No — Talent — Rating\n"
         index = 1
         for i in top_rate:
