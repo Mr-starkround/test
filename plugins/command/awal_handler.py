@@ -18,7 +18,10 @@ async def start_handler(client: Client, msg: types.Message):
         else '@Callme99i'
     )
     mention = msg.from_user.mention
-    buttons = [[InlineKeyboardButton("Help", callback_data="nsj")]]
+    buttons = [
+        [InlineKeyboardButton("Help", callback_data="nsj")],
+        [InlineKeyboardButton("Rules", url="https://t.me/jawafes/9")],
+    ]
     await msg.reply_text(
         text=config.start_msg.format(
             id=msg.from_user.id,
