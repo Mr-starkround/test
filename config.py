@@ -49,5 +49,6 @@ start_msg = os.environ.get("START_MSG", """
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
 🙅‍♂️Pesanmu gagal terkirim.
-<b>silahkan klik start dan baca help untuk menggunakan bot ini</b>
+
+<b>silahkan klik /start dan baca help untuk menggunakan bot ini</b>
 """)
