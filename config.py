@@ -42,6 +42,7 @@ hastag = os.environ.get("HASTAG", "#mas #mba #spill #tanya #story").replace(" ",
 pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @Jawafes. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
 start_msg = os.environ.get("START_MSG", """
 ❏ Haii {mention}
+
 𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
 
 <b>silahkan baca help dan rules terlebih dahulu</b>""")
