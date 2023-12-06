@@ -138,7 +138,7 @@ async def cb_help(client, callback_query):
 3. Kirim pesan anda di @Jawafessbot minimal 3 kata.
 4. Sekarang anda telah berhasil mengirim pesan di @JAWAFES.
 
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. meet yuk {username} </code>
+<b>Contoh pesan:</b> <code>yang dari jogja. meet yuk #mba</code>
 
 <b>CATATAN PENTING:</b> Semua postingan di channel @JAWAFES adalah postingan dari para member yang menggunakan @Jawafessbot. Jika ada yang melanggar rules atau merugikan kalian di channel ini, silahkan chat @vxnjul untuk membantu menghapus dan membanned orang yang melakukannya.
 
