@@ -126,15 +126,23 @@ async def cb_help(client, callback_query):
     ]
     await callback_query.edit_message_text(
         f"""
-<b>silahkan kirim pesan anda menggunakan hashtag:</b>
+🖋Cara mengirim menfess di 𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗣𝗼𝘀𝘁?
 
+1. Wajib subscribe @JAWA_GRUP dan @JAWAFES.
+2. Gunakan #hashtag dalam daftar di bawah ini :
 • #mba [ untuk identitas perempuan]
 • #mas [ untuk identitas laki-laki ]
 • #spill [ untuk spill masalah ]
 • #tanya [ untuk bertanya ]
 • #story [ untuk berbagi cerita/curhat ]
+3. Kirim pesan anda di @Jawafessbot minimal 3 kata.
+4. Sekarang anda telah berhasil mengirim pesan di @JAWAFES.
 
-<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk @vxnjul</code>
+<b>Contoh pesan:</b> <code>#mas yang dari jogja. meet yuk {username} </code>
+
+<b>CATATAN PENTING:</b> Semua postingan di channel @JAWAFES adalah postingan dari para member yang menggunakan @Jawafessbot. Jika ada yang melanggar rules atau merugikan kalian di channel ini, silahkan chat @vxnjul untuk membantu menghapus dan membanned orang yang melakukannya.
+
+</b>👮‍♂️ADMIN MEMILIKI HAK UNTUK BLOCK SENDER/TAKEDOWN MENFESS/SPILL SENDER.</b>
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
