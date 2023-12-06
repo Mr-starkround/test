@@ -120,7 +120,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         first_name = await helper.escapeHTML(first_name),
         last_name = await helper.escapeHTML(last_name),
         fullname = await helper.escapeHTML(fullname)
-    ), True, enums.ParseMode.HTML, disable_web_page_preview=True)    
+    ), True, enums.ParseMode.HTML,  disable_web_page_preview=True)    
         reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
