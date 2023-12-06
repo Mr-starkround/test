@@ -21,10 +21,10 @@ async def start_handler(client: Client, msg: types.Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "Help", callback_data="nsj"
+                "ʜᴇʟᴘ", callback_data="nsj"
             ),
             InlineKeyboardButton(
-                "Rules", url="https://t.me/jawafes/9"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
         ],
     ]
