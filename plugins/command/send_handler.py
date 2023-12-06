@@ -59,7 +59,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
                 if coin >= config.biaya_kirim:
                     coin = db_user.coin - config.biaya_kirim
                 else:
-                    return await msg.reply(f'🙅🏻‍♀️ Pesanmu gagal terkirim {mention}. Kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian., kamu dapat mengirim menfess kembali pada hari esok.\n\n waktu reset jam 1 pagi \n\n💰Topup coin silahkan contact @vxnjul', quote=True)
+                    return await msg.reply(f'🙅🏻‍♀️ Pesanmu gagal terkirim. Kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian., kamu dapat mengirim menfess kembali pada hari esok.\n\n waktu reset jam 1 pagi \n\n💰Topup coin silahkan contact @vxnjul', quote=True)
 
         link = await get_link()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
