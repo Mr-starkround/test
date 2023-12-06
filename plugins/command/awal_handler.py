@@ -45,11 +45,11 @@ async def start_handler(client: Client, msg: types.Message):
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
-    pesan = '<b>User Info</b>\n'
+    pesan = '<b>❏ User Info</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
     pesan += f'└<b>Status :</b> {db.status}\n\n'
-    pesan += '<b>User Stats:</b>\n'
+    pesan += '<b>❏ User Stats:</b>\n'
     pesan += f'├<b>Saldo :</b> {helper.formatrupiah(db.coin)} Coin\n'
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
