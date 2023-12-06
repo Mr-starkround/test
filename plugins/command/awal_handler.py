@@ -103,16 +103,6 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     fullname = first_name if not last_name else first_name + ' ' + last_name
     username = '@vxnjul' if not msg.from_user.username else '@' + msg.from_user.username
     mention = msg.from_user.mention
-    buttons = [
-        [
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
-        ],
-    ]
     return await msg.reply(config.gagalkirim_msg.format(
         id = msg.from_user.id,
         mention = mention,
@@ -121,9 +111,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         last_name = await helper.escapeHTML(last_name),
         fullname = await helper.escapeHTML(fullname)
     ), True, enums.ParseMode.HTML, 
-         disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),      
-    )
+         disable_web_page_preview=True,      
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
