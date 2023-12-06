@@ -142,7 +142,7 @@ async def on_message(client: Client, msg: Message):
                 if member.status == 'admin' or member.status == 'owner':
                     return await unban_handler(client, msg)
 
-            x = re.search(fr"(?:^|\s)({config.HASTAG})", command.lower())
+            x = re.search(fr"(?:^|\s)({config.hastag})", command.lower())
             if x:
                 key = x.group(1)
                 hastag = config.HASTAG.split('|')
