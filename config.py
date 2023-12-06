@@ -10,8 +10,8 @@ db_url = os.environ.get("DB_URL", "mongodb+srv://Alexa:alexa@cluster0.h0zqfue.mo
 db_name = os.environ.get("DB_NAME", "telegram")
 # =========================================================== #
 
-channel_1 = int(os.environ.get("CHANNEL_1", "-1001869711042"))
-channel_2 = int(os.environ.get("CHANNEL_2", "-1001935857563"))
+channel_1 = int(os.environ.get("CHANNEL_1", "-1001935857563"))
+channel_2 = int(os.environ.get("CHANNEL_2", "-1001869711042"))
 channel_log = int(os.environ.get("CHANNEL_LOG", "-1002015387015"))
 # =========================================================== #
 
