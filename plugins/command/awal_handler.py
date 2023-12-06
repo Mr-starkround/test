@@ -49,7 +49,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
     pesan += f'└<b>Status :</b> {db.status}\n\n'
-    pesan += '<b>User Stats</b>\n'
+    pesan += '<b>User Stats:</b>\n'
     pesan += f'├<b>Saldo :</> {helper.formatrupiah(db.coin)} Coin\n'
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
