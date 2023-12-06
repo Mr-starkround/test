@@ -111,6 +111,16 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         last_name = await anu.escapeHTML(last_name),
         fullname = await anu.escapeHTML(fullname)
     ), True, enums.ParseMode.HTML, disable_web_page_preview=True)
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+            ),
+        ],
+    ]
 
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
