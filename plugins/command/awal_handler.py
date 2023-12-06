@@ -134,7 +134,7 @@ async def cb_help(client, callback_query):
 • #tanya [ untuk bertanya ]
 • #story [ untuk berbagi cerita/curhat ]
 
-<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk {mention} </code>
+<b>Contoh pesan:</b> <code>#mba yang dari jogja. meet yuk @vxnjul</code>
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
