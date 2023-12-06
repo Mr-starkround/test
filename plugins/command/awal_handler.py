@@ -103,10 +103,6 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     fullname = first_name if not last_name else first_name + ' ' + last_name
     username = '@vxnjul' if not msg.from_user.username else '@' + msg.from_user.username
     mention = msg.from_user.mention
-    return await msg.reply(config.gagalkirim_msg.format(
-        id = msg.from_user.id,
-        mention = mention,
-        username = username,
     buttons = [
         [
             InlineKeyboardButton(
@@ -117,6 +113,10 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
             ),
         ],
     ]
+    return await msg.reply(config.gagalkirim_msg.format(
+        id = msg.from_user.id,
+        mention = mention,
+        username = username,
         first_name = await anu.escapeHTML(first_name),
         last_name = await anu.escapeHTML(last_name),
         fullname = await anu.escapeHTML(fullname)
