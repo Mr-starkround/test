@@ -117,9 +117,9 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         id = msg.from_user.id,
         mention = mention,
         username = username,
-        first_name = await anu.escapeHTML(first_name),
-        last_name = await anu.escapeHTML(last_name),
-        fullname = await anu.escapeHTML(fullname)
+        first_name = await helper.escapeHTML(first_name),
+        last_name = await helper.escapeHTML(last_name),
+        fullname = await helper.escapeHTML(fullname)
     ), True, enums.ParseMode.HTML, disable_web_page_preview=True)
 
 async def cb_help(client, callback_query):
