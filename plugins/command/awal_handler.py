@@ -98,8 +98,8 @@ async def list_ban_handler(helper: Helper, id_bot: int):
 
 async def gagal_kirim_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    first = msg.from_user.first_name
-    last = msg.from_user.last_name
+    first_name = msg.from_user.first_name
+    last_name = msg.from_user.last_name
     fullname = f'{first} {last}' if last else first
     username = (
         f'@{msg.from_user.username}'
