@@ -117,10 +117,10 @@ async def cb_help(client, callback_query):
     buttons = [
         [
             InlineKeyboardButton(
-                "Tutup", callback_data="ttp"
+                "ᴛᴜᴛᴜᴘ", callback_data="ttp"
             ),
             InlineKeyboardButton(
-                "Rules", url="https://t.me/jawafes/9"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
         ],
     ]
