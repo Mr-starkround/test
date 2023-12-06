@@ -46,14 +46,14 @@ async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     pesan = '<b>User Info</b>\n'
-    pesan += f'├Nama : {db.mention}\n'
-    pesan += f'├User ID : <code>{db.id}</code>\n'
-    pesan += f'└Status : {db.status}\n\n'
+    pesan += f'├<b>Nama :</b> {db.mention}\n'
+    pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
+    pesan += f'└<b>Status :</b> {db.status}\n\n'
     pesan += '<b>User Stats</b>\n'
-    pesan += f'├Saldo : {helper.formatrupiah(db.coin)}Coin\n'
-    pesan += f'├Menfess Harian : {db.menfess}/{config.batas_kirim}\n'
-    pesan += f'├Semua Menfess : {db.all_menfess}\n'
-    pesan += f'└Bergabung : {db.sign_up}'
+    pesan += f'├<bSaldo :</> {helper.formatrupiah(db.coin)} Coin\n'
+    pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
+    pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
+    pesan += f'└<b>Bergabung :</b> {db.sign_up}'
     await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def statistik_handler(client: Helper, id_bot: int):
