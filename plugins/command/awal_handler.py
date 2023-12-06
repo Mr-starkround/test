@@ -45,13 +45,13 @@ async def start_handler(client: Client, msg: types.Message):
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
-    pesan = '<b>🏷Info user</b>\n'
-    pesan += f'├ID : <code>{db.id}</code>\n'
+    pesan = '<b>User Info</b>\n'
     pesan += f'├Nama : {db.mention}\n'
+    pesan += f'├User ID : <code>{db.id}</code>\n'
     pesan += f'└Status : {db.status}\n\n'
-    pesan += '<b>📝Lainnya</b>\n'
-    pesan += f'├Coin : {helper.formatrupiah(db.coin)}💰\n'
-    pesan += f'├Menfess : {db.menfess}/{config.batas_kirim}\n'
+    pesan += '<b>User Stats</b>\n'
+    pesan += f'├Saldo : {helper.formatrupiah(db.coin)}Coin\n'
+    pesan += f'├Menfess Harian : {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├Semua Menfess : {db.all_menfess}\n'
     pesan += f'└Bergabung : {db.sign_up}'
     await msg.reply(pesan, True, enums.ParseMode.HTML)
@@ -134,7 +134,7 @@ async def cb_help(client, callback_query):
 • <code>#tanya</code> [ untuk bertanya ]
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 
-<b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk username </code>
+<b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk </code>
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
