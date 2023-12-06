@@ -134,7 +134,7 @@ async def cb_help(client, callback_query):
 • <code>#tanya</code> [ untuk bertanya ]
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 
-<b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk {db.mention} </code>
+<b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk {db.username} </code>
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
