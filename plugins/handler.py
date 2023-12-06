@@ -142,10 +142,10 @@ async def on_message(client: Client, msg: Message):
                 if member.status == 'admin' or member.status == 'owner':
                     return await unban_handler(client, msg)
 
-            x = re.search(fr"(?:^|\s)({config.hastag})", command.lower())
+            x = re.search(fr"(?:^|\s)({config.HASTAG})", command.lower())
             if x:
                 key = x.group(1)
-                hastag = config.hastag.split('|')
+                hastag = config.HASTAG.split('|')
                 member = database.get_data_pelanggan()
                 if member.status == 'banned':
                     return await msg.reply(f'Kamu telah <b>di banned</b>\n\n<u>Alasan:</u> {database.get_data_bot(client.id_bot).ban[str(uid)]}\nsilahkan kontak @vxnjul untuk unbanned', True, enums.ParseMode.HTML)
