@@ -150,39 +150,44 @@ async def on_message(client: Client, msg: Message):
                 if member.status == 'banned':
                     return await msg.reply(f'Kamu telah <b>di banned</b>\n\n<u>Alasan:</u> {database.get_data_bot(client.id_bot).ban[str(uid)]}\nsilahkan kontak @vxnjul untuk unbanned', True, enums.ParseMode.HTML)
                 if key in [hastag[0], hastag [1]]:
+                    return (
+                        await msg.reply(
+                            '🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>',
+                            True,
+                            enums.ParseMode.HTML,
+                        )
+                        if key == command.lower()
+                        or len(command.split(' ')) < 3
+                        else await send_with_pic_handler(
+                            client, msg, key, hastag
+                        )
+                    )
+                elif key in hastag:
                     if key == command.lower() or len(command.split(' ')) < 3:
-                        return await gagal_kirim_handler(client, msg)
+                        return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
                     await gagal_kirim_handler(client, msg)
             else:
-                await gagal_kirim_handler(client, msg)      
-        else:
-            await gagal_kirim_handler(client, msg)
-    
-    # perintah yang bisa diakses di group
+                await gagal_kirim_handler(client, msg)
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
-        if msg.from_user != None:
-            uid = msg.from_user.id
-        else:
-            if msg.sender_chat.id == config.channel_1:
-                x = re.search(fr"(?:^|\s)({config.hastag})", command.lower())
-                if x:
-                    hastag = config.hastag.split('|')
-                    if x.group(1) in [hastag[0], hastag [1]]:
-                        try:
-                            await client.delete_messages(msg.chat.id, msg.id)
-                        except:
-                            pass
-            else:
+        if msg.from_user is None:
+            if msg.sender_chat.id != config.channel_1:
                 return
-        
+
+            if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
+                hastag = config.hastag.split('|')
+                if x[1] in [hastag[0], hastag[1]]:
+                    try:
+                        await client.delete_messages(msg.chat.id, msg.id)
+                    except:
+                        pass
+        else:
+            uid = msg.from_user.id
         if command != None:
             return
-
-
 
 @Bot.on_callback_query()
 async def on_callback_query(client: Client, query: CallbackQuery):
