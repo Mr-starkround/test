@@ -23,7 +23,7 @@ biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "25"))
 
 # =========================================================== #
 
-hastag = os.environ.get("HASTAG", "#pap #mas | #mba #spill | #tanya #story")
+hastag = os.environ.get("HASTAG", "#pap #mas | #mba #spill #tanya #story")
 # =========================================================== #
 
 pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
