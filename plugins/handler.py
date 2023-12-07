@@ -190,6 +190,8 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await photo_handler_inline(client, query)
     elif query.data == 'video':
         await video_handler_inline(client, query)
+    elif query.data == 'ggl':
+        await cb_ggl(client, query)
     elif query.data == 'nsj':
         await cb_help(client, query)
     elif query.data == 'ttp':
