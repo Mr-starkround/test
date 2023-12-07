@@ -96,7 +96,7 @@ async def list_ban_handler(helper: Helper, id_bot: int):
             ind += 1
     await helper.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
-async def start_handler(client: Client, msg: types.Message):
+async def gagal_kirim_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     first = msg.from_user.first_name
     last = msg.from_user.last_name
