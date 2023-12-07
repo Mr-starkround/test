@@ -54,24 +54,6 @@ async def on_message(client: Client, msg: Message):
             elif command == '/list_ban':  # menampilkan perintah list banned
                 return await list_ban_handler(helper, client.id_bot)
 
-            elif command == '/talent':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/daddysugar':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/moansgirl':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/moansboy':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/gfrent':
-                return await gagal_kirim_handler(client, msg)
-
-            elif command == '/bfrent':
-                return await gagal_kirim_handler(client, msg)
-
             elif command == '/stats':  # menampilkan perintah statistik
                 if uid == config.id_admin:
                     return await statistik_handler(helper, client.id_bot)
