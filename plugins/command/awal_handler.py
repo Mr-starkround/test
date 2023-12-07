@@ -99,10 +99,14 @@ async def list_ban_handler(helper: Helper, id_bot: int):
 
 async def gagal_kirim_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    first_name = msg.from_user.first_name
-    last_name = msg.from_user.last_name
-    fullname = first_name if not last_name else first_name + ' ' + last_name
-    username = '@vxnjul' if not msg.from_user.username else '@' + msg.from_user.username
+    first = msg.from_user.first_name
+    last = msg.from_user.last_name
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@vxnjul'
+    )
     mention = msg.from_user.mention
     buttons = [
         [
