@@ -1,21 +1,21 @@
 import os
 import logging
 
-api_id = int(os.environ.get("API_ID", "22132140"))
-api_hash = os.environ.get("API_HASH", "326ba61167a7513e85c9d8699b345b75")
-bot_token = os.environ.get("BOT_TOKEN", "6985345708:AAGIbUsvwDBBGPHYAJjpWLCq7Oz9cxQ3odo")
+api_id = int(os.environ.get("API_ID", "21484185"))
+api_hash = os.environ.get("API_HASH", "42589444b3ee86b1286f01d966989214")
+bot_token = os.environ.get("BOT_TOKEN", "6872017467:AAFx_RzH9bGA13iolTAYJNJlDWUfLjQ_C14")
 # =========================================================== #
 
 db_url = os.environ.get("DB_URL", "mongodb+srv://Alexa:alexa@cluster0.h0zqfue.mongodb.net/true?retryWrites=true&w=majority")
 db_name = os.environ.get("DB_NAME", "telegram")
 # =========================================================== #
 
-channel_1 = int(os.environ.get("CHANNEL_1", "-1001935857563"))
-channel_2 = int(os.environ.get("CHANNEL_2", "-1001869711042"))
-channel_log = int(os.environ.get("CHANNEL_LOG", "-1002015387015"))
+channel_1 = int(os.environ.get("CHANNEL_1", "-1002089195394"))
+channel_2 = int(os.environ.get("CHANNEL_2", "-1002098707945"))
+channel_log = int(os.environ.get("CHANNEL_LOG", "-1002088952110"))
 # =========================================================== #
 
-id_admin = int(os.environ.get("ID_ADMIN", "1020381855"))
+id_admin = int(os.environ.get("ID_ADMIN", "6725628980"))
 # =========================================================== #
 
 batas_kirim = int(os.environ.get("BATAS_KIRIM", "5"))
