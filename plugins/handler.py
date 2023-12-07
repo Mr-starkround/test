@@ -58,7 +58,7 @@ async def on_message(client: Client, msg: Message):
                 return await gagal_kirim_handler(client, msg)
 
             elif command == '/daddysugar':
-                return await daddy_sugar_handler(client, msg)
+                return await topup_handler(client, msg)
 
             elif command == '/moansgirl':
                 return await moans_girl_handler(client, msg)
