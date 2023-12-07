@@ -125,7 +125,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
          disable_web_page_preview=True,  
   ), 
     reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
+      quote=True
     )
    
 async def cb_help(client, callback_query):
