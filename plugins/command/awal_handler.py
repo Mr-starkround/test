@@ -44,8 +44,8 @@ async def start_handler(client: Client, msg: types.Message):
 
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    db = Database(msg.from_user.id).get_data_pelanggan(
-    pesan = f'<b>❏ User Info:</b>\n'
+    db = Database(msg.from_user.id).get_data_pelanggan(,
+    pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
     pesan += f'└<b>Status :</b> {db.status}\n\n'
