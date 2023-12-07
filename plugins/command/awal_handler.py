@@ -53,8 +53,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Saldo :</b> {helper.formatrupiah(db.coin)} Coin\n'
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
-    pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
-    pesan += f'❏ <b>Topup Coin:</b> @topupcoinbot'
+    pesan += f'└<b>Bergabung :</b> {db.sign_up}'
     await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def statistik_handler(client: Helper, id_bot: int):
@@ -99,38 +98,21 @@ async def list_ban_handler(helper: Helper, id_bot: int):
 
 async def gagal_kirim_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    first = msg.from_user.first_name
-    last = msg.from_user.last_name
-    fullname = f'{first} {last}' if last else first
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-    )
+    first_name = msg.from_user.first_name
+    last_name = msg.from_user.last_name
+    fullname = first_name if not last_name else first_name + ' ' + last_name
+    username = '@vxnjul' if not msg.from_user.username else '@' + msg.from_user.username
     mention = msg.from_user.mention
-    buttons = [
-        [
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
-        ],
-    ]
-    await msg.reply(config.gagalkirim_msg.format(
+    return await msg.reply(config.gagalkirim_msg.format(
         id = msg.from_user.id,
         mention = mention,
         username = username,
         first_name = await helper.escapeHTML(first_name),
         last_name = await helper.escapeHTML(last_name),
         fullname = await helper.escapeHTML(fullname)
-    ), True, helper.ParseMode.HTML, 
+    ), True, enums.ParseMode.HTML, 
          disable_web_page_preview=True,  
-  ), 
-    reply_markup=InlineKeyboardMarkup(buttons),     
-    )
-   
+  ),    
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
@@ -143,26 +125,6 @@ async def cb_help(client, callback_query):
             ),
         ],
     ]
-    await callback_query.edit_message_text(
-        f"""
-<b>Silahkan kirim pesan anda menggunakan hashtag dibawah ini:</b>
-
-• <code>#mba</code> [ untuk identitas perempuan]
-• <code>#mas</code> [ untuk identitas laki-laki ]
-• <code>#spill</code> [ untuk spill masalah ]
-• <code>#tanya</code> [ untuk bertanya ]
-• <code>#story</code> [ untuk berbagi cerita/curhat ]
-
-<b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk </code>
-""",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-    )
-
-
-async def cb_close(client, callback_query):
-    await callback_query.message.delete()
-
     await callback_query.edit_message_text(
         f"""
 <b>Silahkan kirim pesan anda menggunakan hashtag dibawah ini:</b>
