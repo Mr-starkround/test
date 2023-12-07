@@ -96,12 +96,16 @@ async def list_ban_handler(helper: Helper, id_bot: int):
             ind += 1
     await helper.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
-async def gagal_kirim_handler(client: Client, msg: types.Message):
+async def start_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    first_name = msg.from_user.first_name
-    last_name = msg.from_user.last_name
-    fullname = first_name if not last_name else first_name + ' ' + last_name
-    username = '@vxnjul' if not msg.from_user.username else '@' + msg.from_user.username
+    first = msg.from_user.first_name
+    last = msg.from_user.last_name
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@vxnjul'
+    )
     mention = msg.from_user.mention
     buttons = [
         [
@@ -113,15 +117,16 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
             ),
         ],
     ]
-    return await msg.reply(config.gagalkirim_msg.format(
-        id = msg.from_user.id,
-        mention = mention,
-        username = username,
-        first_name = await helper.escapeHTML(first_name),
-        last_name = await helper.escapeHTML(last_name),
-        fullname = await helper.escapeHTML(fullname)
-    ), True, enums.ParseMode.HTML, 
-         disable_web_page_preview=True,      
+    await msg.reply_text(
+        text=config.start_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
+        disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
