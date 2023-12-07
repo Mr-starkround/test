@@ -270,12 +270,6 @@ class data_bot():
         super().__init__()
         self.id = args['_id']
         self.bot_status = args['bot_status']
-        self.talent = dict(args['talent'])
-        self.daddy_sugar = dict(args['daddy_sugar'])
-        self.moansgirl = dict(args['moansgirl'])
-        self.moansboy = dict(args['moansboy'])
-        self.gfrent = dict(args['gfrent'])
-        self.bfrent = dict(args['bfrent'])
         self.ban = dict(args['ban'])
         self.admin = list(args['admin'])
         self.kirimchannel = kirim_channel(dict(args['kirimchannel']))
