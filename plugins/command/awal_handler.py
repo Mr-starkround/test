@@ -176,10 +176,7 @@ async def cb_ggl(client, callback_query):
     buttons = [
         [
             InlineKeyboardButton(
-                "ᴛᴜᴛᴜᴘ", callback_data="ttp"
-            ),
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+                "ttp", url="https://t.me/jawafes/9"
             ),
         ],
     ]
