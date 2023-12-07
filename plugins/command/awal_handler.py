@@ -159,3 +159,23 @@ async def cb_help(client, callback_query):
 
 async def cb_close(client, callback_query):
     await callback_query.message.delete()
+
+    await callback_query.edit_message_text(
+        f"""
+<b>Silahkan kirim pesan anda menggunakan hashtag dibawah ini:</b>
+
+• <code>#mba</code> [ untuk identitas perempuan]
+• <code>#mas</code> [ untuk identitas laki-laki ]
+• <code>#spill</code> [ untuk spill masalah ]
+• <code>#tanya</code> [ untuk bertanya ]
+• <code>#story</code> [ untuk berbagi cerita/curhat ]
+
+<b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk </code>
+""",
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
+    )
+
+
+async def cb_close(client, callback_query):
+    await callback_query.message.delete()
