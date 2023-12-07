@@ -106,31 +106,11 @@ async def on_message(client: Client, msg: Message):
 
             elif re.search(r"^[\/]addtalent", command):  # menambahkan talent baru
                 if uid == config.id_admin:
-                    return await tambah_talent_handler(client, msg)
+                    return await tam_handler(client, msg)
 
             elif re.search(r"^[\/]addsugar", command):  # menambahkan daddy sugar baru
                 if uid == config.id_admin:
-                    return await tambah_sugar_daddy_handler(client, msg)
-
-            elif re.search(r"^[\/]addgirl", command):  # menambahkan moans girl baru
-                if uid == config.id_admin:
-                    return await tambah_moans_girl_handler(client, msg)
-
-            elif re.search(r"^[\/]addboy", command):  # menambahkan moans boy baru
-                if uid == config.id_admin:
-                    return await tambah_moans_boy_handler(client, msg)
-
-            elif re.search(r"^[\/]addgf", command):  # menambahkan gf rent baru
-                if uid == config.id_admin:
-                    return await tambah_gf_rent_handler(client, msg)
-
-            elif re.search(r"^[\/]addbf", command):  # menambahkan bf rent baru
-                if uid == config.id_admin:
-                    return await tambah_bf_rent_handler(client, msg)
-
-            elif re.search(r"^[\/]hapus", command):  # menambahkan mengapus talent
-                if uid == config.id_admin:
-                    return await hapus_talent_handler(client, msg)
+                    return await gagal_kirim_handler(client, msg)
 
             elif re.search(r"^[\/]ban", command):  # membanned user
                 member = database.get_data_pelanggan()
