@@ -19,7 +19,7 @@ class Database():
             "menfess": 0,
             "bot_status": True,
             "talent": {},
-            "daddy_sugar": {},
+            "topup": {},
             "moansgirl": {},
             "moansboy": {},
             "gfrent": {},
