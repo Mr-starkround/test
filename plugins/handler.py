@@ -142,7 +142,7 @@ async def on_message(client: Client, msg: Message):
                 if member.status == 'admin' or member.status == 'owner':
                     return await unban_handler(client, msg)
 
-                        if key == command.lower({config.hastag})
+                        if key == command.lower('')
                         or len(command.split(' ')) < 3
                         else await config.hastag(
                             client, msg, key, hastag
