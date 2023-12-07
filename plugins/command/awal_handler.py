@@ -162,3 +162,27 @@ async def cb_help(client, callback_query):
 
 async def cb_close(client, callback_query):
     await callback_query.message.delete()
+
+async def cb_ggl(client, callback_query):
+    user_id = callback_query.from_user.id
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "ᴛᴜᴛᴜᴘ", callback_data="ttp"
+            ),
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+            ),
+        ],
+    ]
+    await callback_query.edit_message_text(
+        f"""
+test dulu ya
+""",
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
+    )
+
+
+async def cb_close(client, callback_query):
+    await callback_query.message.delete()
