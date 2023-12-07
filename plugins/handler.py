@@ -58,19 +58,19 @@ async def on_message(client: Client, msg: Message):
                 return await gagal_kirim_handler(client, msg)
 
             elif command == '/daddysugar':
-                return await topup_handler(client, msg)
+                return await gagal_kirim_handler(client, msg)
 
             elif command == '/moansgirl':
-                return await moans_girl_handler(client, msg)
+                return await gagal_kirim_handler(client, msg)
 
             elif command == '/moansboy':
-                return await moans_boy_handler(client, msg)
+                return await gagal_kirim_handler(client, msg)
 
             elif command == '/gfrent':
-                return await gf_rent_handler(client, msg)
+                return await gagal_kirim_handler(client, msg)
 
             elif command == '/bfrent':
-                return await bf_rent_handler(client, msg)
+                return await gagal_kirim_handler(client, msg)
 
             elif command == '/stats':  # menampilkan perintah statistik
                 if uid == config.id_admin:
