@@ -62,6 +62,8 @@ async def status_handler(client: Client, msg: types.Message):
         ],
     ]
     await msg.reply(pesan, True, enums.ParseMode.HTML)
+
+        disable_web_page_preview=True,
 reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
