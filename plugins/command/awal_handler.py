@@ -44,7 +44,7 @@ async def start_handler(client: Client, msg: types.Message):
 
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    db = Database(msg.from_user.id).get_data_pelanggan(,
+    db = Database(msg.from_user.id).get_data_pelanggan()
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
@@ -54,6 +54,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}'
+    (
     buttons = [
         [
             InlineKeyboardButton(
