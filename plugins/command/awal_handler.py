@@ -114,7 +114,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
             ),
         ],
     ]
-    return await msg.reply(config.gagalkirim_msg.format(
+    await msg.reply(config.gagalkirim_msg.format(
         id = msg.from_user.id,
         mention = mention,
         username = username,
