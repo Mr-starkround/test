@@ -53,7 +53,8 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Saldo :</b> {helper.formatrupiah(db.coin)} Coin\n'
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
-    pesan += f'└<b>Bergabung :</b> {db.sign_up}'
+    pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
+    pesan += f'❏ <b>Topup Coin:</b> @topupcoinbot'
     await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def statistik_handler(client: Helper, id_bot: int):
