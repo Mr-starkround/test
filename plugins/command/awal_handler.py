@@ -61,13 +61,19 @@ async def status_handler(client: Client, msg: types.Message):
             ),
         ],
     ]
-    await msg.reply(pesan, True, enums.ParseMode.HTML)
-
+    await msg.reply_text(
+        text=config.start_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
         disable_web_page_preview=True,
-reply_markup=InlineKeyboardMarkup(buttons),
+        reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
-
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
     bot = db.get_data_bot(id_bot)
