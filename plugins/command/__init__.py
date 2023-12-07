@@ -4,4 +4,3 @@ from .send_handler import *
 from .ban_handler import *
 from .bot_handler import *
 from .broadcast_handler import *
-from .topup_handler import *
