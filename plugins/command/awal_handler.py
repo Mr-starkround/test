@@ -58,7 +58,7 @@ async def status_handler(client: Client, msg: types.Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "Top Up Coin", url="https/t.me/topupcoinbot"
+                "jos", callback_data="ggl"
             ),
         ],
     ]
