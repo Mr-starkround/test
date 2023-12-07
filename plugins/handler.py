@@ -171,7 +171,7 @@ async def on_message(client: Client, msg: Message):
                 x = re.search(fr"(?:^|\s)({config.hastag})", command.lower())
                 if x:
                     hastag = config.hastag.split('|')
-                    if x.group(1) in [hastag[0], hastag [1]]:
+                    if x.[1] in [hastag[0], hastag [1]]:
                         try:
                             await client.delete_messages(msg.chat.id, msg.id)
                         except:
