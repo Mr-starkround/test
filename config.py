@@ -18,25 +18,12 @@ channel_log = int(os.environ.get("CHANNEL_LOG", "-1002088952110"))
 id_admin = int(os.environ.get("ID_ADMIN", "6725628980"))
 # =========================================================== #
 
-batas_kirim = int(os.environ.get("BATAS_KIRIM", "5"))
-batas_talent = int(os.environ.get("BATAS_TALENT", "10"))
-batas_daddy_sugar = int(os.environ.get("BATAS_DADDY_SUGAR", "10"))
-batas_moansgirl = int(os.environ.get("BATAS_MOANSGIRL", "10"))
-batas_moansboy = int(os.environ.get("BATAS_MOANSBOY", "10"))
-batas_gfrent = int(os.environ.get("BATAS_GFRENT", "10"))
-batas_bfrent = int(os.environ.get("BATAS_BFRENT", "10"))
-# =========================================================== #
-
+batas_kirim = int(os.environ.get("BATAS_KIRIM", "5")) 
 biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "25"))
-biaya_talent = int(os.environ.get("BIAYA_TALENT", "80"))
-biaya_daddy_sugar = int(os.environ.get("BIAYA_DADDY_SUGAR", "70"))
-biaya_moansgirl = int(os.environ.get("BIAYA_MOANSGIRL", "60"))
-biaya_moansboy = int(os.environ.get("BIAYA_MOANSBOY", "50"))
-biaya_gfrent = int(os.environ.get("BIAYA_GFRENT", "40"))
-biaya_bfrent = int(os.environ.get("BIAYA_BFRENT", "30"))
+
 # =========================================================== #
 
-hastag = os.environ.get("HASTAG", "#pap | #mas | #mba | #spill | #tanya | #story").replace(" ", "|").lower()
+hastag = os.environ.get("HASTAG", "#pap #mas #mba #spill #tanya #story").replace(" ", "|").lower()
 # =========================================================== #
 
 pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
