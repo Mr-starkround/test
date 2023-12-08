@@ -5,9 +5,6 @@ from pyrogram.types import *
 
 from pyrogram import Client, types, enums
 from plugins import Helper, Database
-from pyrogram.types import (
-    Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-)
 
 
 async def start_handler(client: Client, msg: types.Message):
@@ -45,10 +42,8 @@ async def start_handler(client: Client, msg: types.Message):
         quote=True
     )
 
-async def status_handler_inline(client: Client, query: CallbackQuery):
-    msg = query.message
-    inline_keyboard = msg.reply_markup.inline_keyboard.text
-    my_db = Database(msg.from_user.id)
+async def status_handler(client: Client, msg: types.Message):
+    helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
@@ -60,13 +55,8 @@ async def status_handler_inline(client: Client, query: CallbackQuery):
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
     pesan += '<b>❏Topup coin:</b> @topupcoinbot'
-        markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton('test', callback_data='nsj'), 
-        [InlineKeyboardButton(njul, callback_data='http/t.me/vxnjul')]
-    ])
-    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=markup
-    )
-            
+    await msg.reply(pesan, True, enums.ParseMode.HTML)
+
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
     bot = db.get_data_bot(id_bot)
@@ -129,7 +119,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     ],
 [
             InlineKeyboardButton(
-                "Top Up", url="https://t.me/topupcoinbot?start=start"
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start"
             ),
         ],
     ]
@@ -147,41 +137,6 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         quote=True
     )
 
-async def spill_handler(client: Client, msg: types.Message):
-    helper = Helper(client, msg)
-    db = Database(msg.from_user.id).get_data_pelanggan()
-    first = msg.from_user.first_name
-    last = msg.from_user.last_name
-    fullname = f'{first} {last}' if last else first
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-    )
-    mention = msg.from_user.mention
-    buttons = [
-        [           
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
-        ],
-    ]
-    await msg.reply_text(
-        text=config.spill_msg.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
-        ),
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
-    )
 async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
@@ -197,9 +152,6 @@ async def cb_help(client, callback_query):
 
 • <code>#mba</code> [ untuk identitas perempuan]
 • <code>#mas</code> [ untuk identitas laki-laki ]
-• <code>#spill</code> [ untuk spill masalah ]
-• <code>#tanya</code> [ untuk bertanya ]
-• <code>#story</code> [ untuk berbagi cerita/curhat ]
 
 <b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk </code>
 """,
@@ -210,20 +162,3 @@ async def cb_help(client, callback_query):
 
 async def cb_close(client, callback_query):
     await callback_query.message.delete()
-
-async def cb_ggl(client, callback_query):
-    user_id = callback_query.from_user.id
-    buttons = [
-        [
-            InlineKeyboardButton(
-                "ttp", url="https://t.me/jawafes/9"
-            ),
-        ],
-    ]
-    await callback_query.edit_message_text(
-        f"""
-Test dulu
-""",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-    )
