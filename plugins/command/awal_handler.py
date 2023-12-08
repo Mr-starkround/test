@@ -58,6 +58,9 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
     pesan += '<b>❏Topup coin:</b> @topupcoinbot'
+    markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton('📸', callback_data='no'), InlineKeyboardButton(photo[1], callback_data='photo')],
+
     await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def statistik_handler(client: Helper, id_bot: int):
