@@ -54,16 +54,11 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Saldo :</b> {helper.formatrupiah(db.coin)} Coin\n'
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
-    pesan += f'└<b>Bergabung :</b> {db.sign_up}'
-    buttons = [
-        [
-            InlineKeyboardButton(
-                "jos", callback_data="ggl"
-            ),
-        ],
-    ]
-    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
+    pesan += f'└<b>Bergabung :</b> {db.sign_up}'    
+markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton('joss', callback_data='ggl'), 
+    ])
+    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=markup
     )
 
 async def statistik_handler(client: Helper, id_bot: int):
