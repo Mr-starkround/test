@@ -58,7 +58,7 @@ async def status_handler(client: Client, msg: types.Message):
 markup = InlineKeyboardMarkup(
         InlineKeyboardButton('joss', callback_data='ggl'), 
     ),
-    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=markup
+    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup
     )
 
 async def statistik_handler(client: Helper, id_bot: int):
