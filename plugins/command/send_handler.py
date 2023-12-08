@@ -27,19 +27,9 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
 
         if key == command.lower():
             key = config.hastag
-        elif key == hastag[1]:
+        elif key == command.lower():
             key = config.hastag
-
-        if user.status == 'member':
-            key = config.hastag
-        if user.status == 'owner':
-            key = config.hastag
-        if user.status == 'admin':
-            if key == hastag[0]:
-                key = config.hastag
-            elif key == hastag[1]:
-                key = config.hastag       
-
+        
         link = await get_link()
         caption = msg.text or msg.caption
         entities = msg.entities or msg.caption_entities
