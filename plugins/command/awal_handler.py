@@ -5,6 +5,9 @@ from pyrogram.types import *
 
 from pyrogram import Client, types, enums
 from plugins import Helper, Database
+from pyrogram.types import (
+    Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+)
 
 
 async def start_handler(client: Client, msg: types.Message):
