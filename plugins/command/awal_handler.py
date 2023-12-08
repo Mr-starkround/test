@@ -159,7 +159,7 @@ async def spill_handler(client: Client, msg: types.Message):
         ],
     ]
     await msg.reply_text(
-        text=config.status_msg.format(
+        text=config.spill_msg.format(
             id=msg.from_user.id,
             mention=mention,
             username=username,
