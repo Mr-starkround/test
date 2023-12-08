@@ -123,7 +123,7 @@ async def on_message(client: Client, msg: Message):
         else:
             await gagal_kirim_handler(client, msg)
 
-                if key in config.hastag:
+                if key in hastag:
                     if key == command.lower() or len(command.split(' | ')):
                         return await msg.reply('pesan gagal terkirim, pakai hastag.', True)
 
