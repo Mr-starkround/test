@@ -139,9 +139,6 @@ async def cb_help(client, callback_query):
             InlineKeyboardButton(
                 "ᴛᴜᴛᴜᴘ", callback_data="ttp"
             ),
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
         ],
     ]
     await callback_query.edit_message_text(
