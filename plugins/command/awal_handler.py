@@ -44,7 +44,15 @@ async def start_handler(client: Client, msg: types.Message):
 
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    query  = CallbackQuery
+    first = msg.from_user.first_name
+    last = msg.from_user.last_name
+    fullname = f'{first} {last}' if last else first
+    username = (
+        f'@{msg.from_user.username}'
+        if msg.from_user.username
+        else '@vxnjul'
+    )
+    mention = msg.from_user.mention
     db = Database(msg.from_user.id).get_data_pelanggan()
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
@@ -66,6 +74,8 @@ async def status_handler(client: Client, msg: types.Message):
         ],
     ]    
     await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML)
+
+        disable_web_page_preview
 reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
