@@ -114,7 +114,7 @@ async def on_message(client: Client, msg: Message):
                 if key in [hastag[0], hastag [1]]:
                         return await msg.reply('pesan gagal terkirim, pakai hastag.', True)
                    else:
-                        return await send_menfess_handler(client, msg)
+                await send_menfess_handler(client, msg)
                 else:
                 await gagal_kirim_handler(client, msg)
                 await gagal_kirim_handler(client, msg)      
