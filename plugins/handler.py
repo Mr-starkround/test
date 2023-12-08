@@ -117,15 +117,10 @@ async def on_message(client: Client, msg: Message):
                     else:
                         return await send_menfess_handler(client, msg)
                 else:
-                    await gagal_kirim_handler(client, msg)
-            else:
+                await msg.reply('pesan gagal terkirim, pakai hastag.', True)           else:
                 await gagal_kirim_handler(client, msg)      
         else:
             await gagal_kirim_handler(client, msg)
-
-                if key in hastag:
-                    if key == command.lower() or len(command.split(' | ')):
-                        return await msg.reply('pesan gagal terkirim, pakai hastag.', True)
 
     # perintah yang bisa diakses di group
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
