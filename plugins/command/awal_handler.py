@@ -60,6 +60,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += '<b>❏Topup coin:</b> @topupcoinbot'
     markup = InlineKeyboardMarkup([
         [InlineKeyboardButton('📸', callback_data='no'), InlineKeyboardButton(photo[1], callback_data='photo')],
+  ]),
 
         await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=markup
     )
