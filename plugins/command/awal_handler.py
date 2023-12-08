@@ -116,6 +116,8 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
             InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
+    ],
+[
             InlineKeyboardButton(
                 "Top Up", url="https://t.me/topupcoinbot?start=start"
             ),
