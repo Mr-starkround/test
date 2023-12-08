@@ -23,7 +23,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         caption = msg.text or msg.caption
         entities = msg.entities or msg.caption_entities
 
-        kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities)
+        kirim = await client.send_photo(config.channel_1, caption, caption_entities=entities)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi")
@@ -32,6 +32,7 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
 
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
+    hastag = hastag(msg.config.hastag)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
@@ -57,7 +58,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
                     return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. Topup Coin silahkan hubungi</b> @vxnjul', quote=True)
  
         link = await get_link()
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, hastag)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi")
