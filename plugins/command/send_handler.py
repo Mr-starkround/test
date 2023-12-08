@@ -37,10 +37,23 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
 
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    hastag = config(client, msg)
+    ah = config(client, msg)
+    ih = config.hastag.split(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
+                kirim(id, f"gagal mengirim!!\n\nkamu baru saja mengirim menfess, beri jarak {delay} detik untuk memposting kembali!")
+        elif ih < 3:
+                kirim(id, "gagal mengirim!!\n\ntidak boleh kurang dari 3 kata!!")
+        elif ah == False:
+                tag = '\n'.join(map(str, hastag))
+                kirim(id, f"gagal mengirim!!\n\nharap gunakan tag dibawah ini : \n{hastag}")
+        elif ah == True:
+                pesan = kirim(ch, teks)
+                links = link + "/" + str(pesan.id)
+                linksk = links + "?comment=" + str(pesan.id)
+                kirim(id, f"*Menfess Berhasil Diposting!!*", parse_mode="markdown", reply_markup=awikwokbanget(links, linksk))
+                diam(id)
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
