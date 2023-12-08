@@ -137,7 +137,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
         quote=True
     )
 
-async def spill_handler(client: Client, msg: types.Message):
+async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     first = msg.from_user.first_name
     last = msg.from_user.last_name
@@ -159,7 +159,7 @@ async def spill_handler(client: Client, msg: types.Message):
         ],
     ]
     await msg.reply_text(
-        text=config.start_msg.format(
+        text=config.status_msg.format(
             id=msg.from_user.id,
             mention=mention,
             username=username,
