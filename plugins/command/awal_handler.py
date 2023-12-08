@@ -62,7 +62,8 @@ async def status_handler(client: Client, msg: types.Message):
             ),
         ],
     ]
-    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=markup
+    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
     )
 
 async def statistik_handler(client: Helper, id_bot: int):
