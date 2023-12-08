@@ -12,7 +12,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     if msg.text or msg.photo or msg.video or msg.voice:
                 return await msg.reply('pakai hastag', True)
-            if db_user.status == 'member' or db_user.status == 'talent':
+            if db_user.status == 'member':
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
             if db_user.status == 'member':
                 return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
