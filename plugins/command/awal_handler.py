@@ -74,8 +74,15 @@ async def status_handler(client: Client, msg: types.Message):
         ],
     ]    
     await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML)
-
-        disable_web_page_preview
+text=config.start_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
+        disable_web_page_preview=True,
 reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
