@@ -31,20 +31,14 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
             hastag = config.hastag
 
         if user.status == 'talent':
-            picture = config.pic_talentgirl
+            picture = config.hastag
         if user.status == 'owner':
-            picture = config.pic_owner
+            picture = config.hastag
         if user.status == 'admin':
             if key == hastag[0]:
-                picture = config.pic_admingirl
+                picture = config.hastag
             elif key == hastag[1]:
-                picture = config.pic_adminboy
-        if user.status == 'daddy sugar':
-            picture = config.pic_daddysugar
-        if user.status == 'boyfriend rent':
-            pictur = config.pic_bfrent
-        elif user.status == 'moans boy':
-            picture = config.pic_moansboy
+                picture = config.hastag       
 
         link = await get_link()
         caption = msg.text or msg.caption
