@@ -60,16 +60,13 @@ async def status_handler_inline(client: Client, query: CallbackQuery):
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
     pesan += '<b>❏Topup coin:</b> @topupcoinbot'
-    buttons = [
-        [           
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-       ],
-    ]
-            await msg.reply(get_data_pelanggan(), True, enums.ParseMode.HTML, reply_markup=InlineKeyboardMarkup(buttons),
+        markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton('test', callback_data='nsj'), 
+        [InlineKeyboardButton(njul, callback_data='http/t.me/vxnjul')]
+    ])
+    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=markup
     )
-
+            
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
     bot = db.get_data_bot(id_bot)
