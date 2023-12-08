@@ -4,20 +4,51 @@ import re
 from pyrogram import Client, types, enums
 from plugins import Database, Helper
 
+async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
+    db = Database(msg.from_user.id)
+    helper = Helper(client, msg)
+    user = db.get_data_pelanggan()
+    if msg.text or msg.photo or msg.video or msg.voice:
+        menfess = user.menfess
+        all_menfess = user.all_menfess
+        coin = user.coin
+        if menfess >= config.batas_kirim:
+            if user.status == 'member' or user.status == 'talent':
+                if coin >= config.biaya_kirim:
+                    coin = user.coin - config.biaya_kirim
+                else:
+                    return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. Topup Coin silahkan hubungi</b> @vxnjul', quote=True)
+
+        if key == hastag[0]:
+            picture = config.pic_girl
+        elif key == hastag[1]:
+            picture = config.pic_boy
+
+        link = await get_link()
+        caption = msg.text or msg.caption
+        entities = msg.entities or msg.caption_entities
+
+        kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities)
+        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
+        await db.update_menfess(coin, menfess, all_menfess)
+        await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi")
+    else:
+        await msg.reply('media yang didukung photo, video dan voice')
+
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    config = hastag(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     if msg.text or msg.photo or msg.video or msg.voice:
-                return await msg.reply('pakai hastag', True)
-            if db_user.status == 'member':
+        if msg.photo and not db_bot.photo:
+            if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
-            if db_user.status == 'member':
+        elif msg.video and not db_bot.video:
+            if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
         elif msg.voice and not db_bot.voice:
-            if db_user.status == 'member':
+            if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim voice, karena sedang dinonaktifkan oleh admin', True)
 
         menfess = db_user.menfess
@@ -37,6 +68,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi")
     else:
         await msg.reply('media yang didukung photo, video dan voice')
+
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
