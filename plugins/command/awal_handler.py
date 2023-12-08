@@ -55,17 +55,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}'    
-    buttons = [
-        [          
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
-        ],
-    ]
     await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML)
-reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
-    )
 
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
