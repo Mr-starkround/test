@@ -82,8 +82,7 @@ text=config.start_msg.format(
             last_name=await helper.escapeHTML(last),
             fullname=await helper.escapeHTML(fullname),
         ),
-        disable_web_page_preview=True,
-reply_markup=InlineKeyboardMarkup(buttons),
+        disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
 
