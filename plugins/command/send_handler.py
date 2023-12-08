@@ -19,10 +19,10 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
                 else:
                     return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. Topup Coin silahkan hubungi</b> @vxnjul', quote=True)
 
-        if key == hastag[0]:
-            picture = config.pic_girl
-        elif key == hastag[1]:
-            picture = config.pic_boy
+                        if hastag >= config.hastag:
+                    hastag = user.hastag - config.hastag
+                else:
+                    return await msg.reply(f'❌ iya gaboleh', quote=True)
 
         link = await get_link()
         caption = msg.text or msg.caption
@@ -37,15 +37,14 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
 
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    ah = config(client, msg)
-    ih = config.hastag.split(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel                     
-   if msg.text or msg.photo or msg.video or msg.voice:   
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel
+    if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
+        elif msg.video and not db_bot.video:
             if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
         elif msg.voice and not db_bot.voice:
@@ -61,11 +60,10 @@ async def send_menfess_handler(client: Client, msg: types.Message):
                     coin = db_user.coin - config.biaya_kirim
                 else:
                     return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. Topup Coin silahkan hubungi</b> @vxnjul', quote=True)
-                if hastag >= config.hastag:
+             if hastag >= config.hastag:
                     hastag = user.hastag - config.hastag
                 else:
                     return await msg.reply(f'❌ iya gaboleh', quote=True)
-   
 
         link = await get_link()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
