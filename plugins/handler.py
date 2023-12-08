@@ -122,7 +122,7 @@ async def on_message(client: Client, msg: Message):
 
                     if key == command.lower() or len(command.split(' ')) < 3:
                         return await msg.reply('pesan gagal terkirim, pesan anda wajib lebih dari 3 kata.', True)
-                    else:
+                else:
                         return await send_menfess_handler(client, msg)
                 else:
                 await gagal_kirim_handler(client, msg)
