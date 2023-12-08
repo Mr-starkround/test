@@ -19,11 +19,6 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
                 else:
                     return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. Topup Coin silahkan hubungi</b> @vxnjul', quote=True)
 
-                        if hastag >= config.hastag:
-                    hastag = user.hastag - config.hastag
-                else:
-                    return await msg.reply(f'❌ iya gaboleh', quote=True)
-
         link = await get_link()
         caption = msg.text or msg.caption
         entities = msg.entities or msg.caption_entities
@@ -60,11 +55,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
                     coin = db_user.coin - config.biaya_kirim
                 else:
                     return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. Topup Coin silahkan hubungi</b> @vxnjul', quote=True)
-             if hastag >= config.hastag:
-                    hastag = user.hastag - config.hastag
-                else:
-                    return await msg.reply(f'❌ iya gaboleh', quote=True)
-
+ 
         link = await get_link()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
