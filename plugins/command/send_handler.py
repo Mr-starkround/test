@@ -15,7 +15,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
-        elif msg.video and not db_bot.video:
             if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
         elif msg.voice and not db_bot.voice:
