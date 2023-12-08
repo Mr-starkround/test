@@ -113,7 +113,7 @@ async def on_message(client: Client, msg: Message):
                     return await msg.reply(f'Kamu telah <b>di banned</b>\n\n<u>Alasan:</u> {database.get_data_bot(client.id_bot).ban[str(uid)]}\nsilahkan kontak @vxnjul untuk unbanned', True, enums.ParseMode.HTML)
                 if key in [hastag[0], hastag [1]]:
                         return await msg.reply('pesan gagal terkirim, pakai hastag.', True)
-                await send_menfess_handler(client, msg)  else:
+                await send_menfess_handler(client, msg)
                 await gagal_kirim_handler(client, msg)
                 await gagal_kirim_handler(client, msg)      
         else:
