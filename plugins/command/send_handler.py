@@ -41,17 +41,10 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     ih = config.hastag.split(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel              
-        elif ah == False:
-                tag = '\n'.join(map(str, hastag))
-                kirim(db, f"gagal mengirim!!\n\nharap gunakan tag dibawah ini : \n{hastag}")
-        elif ah == True:
-                pesan = kirim(ch, teks)
-                links = link + "/" + str(pesan.id)
-                linksk = links + "?comment=" + str(pesan.id)
-                kirim(db, f"*Menfess Berhasil Diposting!!*", parse_mode="markdown", reply_markup=awikwokbanget(links, linksk))
-                diam(id)
-    if msg.text or msg.photo or msg.video or msg.voice:
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel                     
+   if msg.text or msg.photo or msg.video or msg.voice: 
+        if config.hastag == 'member'
+           rerurn await msg.reply('tidak bisa hastag', True)      
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
