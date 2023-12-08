@@ -45,8 +45,10 @@ async def start_handler(client: Client, msg: types.Message):
         quote=True
     )
 
-async def status_handler(client: Client, msg: types.Message):
-    helper = Helper(client, msg)
+async def status_handler_inline(client: Client, query: CallbackQuery):
+    msg = query.message
+    inline_keyboard = msg.reply_markup.inline_keyboard.text
+    my_db = Database(msg.from_user.id)
     db = Database(msg.from_user.id).get_data_pelanggan()
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
