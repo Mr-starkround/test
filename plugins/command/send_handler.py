@@ -41,8 +41,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     ih = config.hastag.split(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel
-                kirim(db, "gagal mengirim!!\n\ntidak boleh kurang dari 3 kata!!")
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel              
         elif ah == False:
                 tag = '\n'.join(map(str, hastag))
                 kirim(db, f"gagal mengirim!!\n\nharap gunakan tag dibawah ini : \n{hastag}")
