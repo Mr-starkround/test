@@ -37,19 +37,15 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
 
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    ah = hastag(client, msg)
+    config = hastag(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
     if msg.text or msg.photo or msg.video or msg.voice:
-                else:
-                return await msg.reply('pakai hastag', False)
+                return await msg.reply('pakai hastag', True)
         if msg.photo and not db_bot.photo:
-                else:
-                return await msg.reply('bot tidak boleh', False)
             if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
-        elif msg.video and not db_bot.video:
             if db_user.status == 'member' or db_user.status == 'talent':
                 return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
         elif msg.voice and not db_bot.voice:
@@ -73,7 +69,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi")
     else:
         await msg.reply('media yang didukung photo, video dan voice')
-
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
