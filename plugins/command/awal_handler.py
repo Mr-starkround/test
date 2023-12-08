@@ -44,15 +44,6 @@ async def start_handler(client: Client, msg: types.Message):
 
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    first = msg.from_user.first_name
-    last = msg.from_user.last_name
-    fullname = f'{first} {last}' if last else first
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-    )
-    mention = msg.from_user.mention
     db = Database(msg.from_user.id).get_data_pelanggan()
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
@@ -62,29 +53,9 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Saldo :</b> {helper.formatrupiah(db.coin)} Coin\n'
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
-    pesan += f'└<b>Bergabung :</b> {db.sign_up}'
-    buttons = [
-        [           
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
-            InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
-            ),
-        ],
-    ]    
-    await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML)
-text=config.start_msg.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
-        ),
-        disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
-    )
+    pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
+    pesan += '<b>❏Topup coin:</b> @topupcoinbot'
+    await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
