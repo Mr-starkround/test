@@ -37,3 +37,17 @@ start_msg = os.environ.get("START_MSG", """
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
 pesan anda gagal terkirim. <b>silahkan klik button help bila butuh bantuan</b>
 """)
+
+# =========================================================== #
+status_handler = os.environ.get("STATUS_HANDLER", """
+b>❏ User Info:</b>\n'
+├<b>Nama :</b> {db.mention}\n'
+├<b>User ID :</b> <code>{db.id}</code>\n'
+└<b>Status :</b> {db.status}\n\n'
+<b>❏ User Stats:</b>\n'
+├<b>Saldo :</b> {helper.formatrupiah(db.coin)} Coin\n'
+├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
+├<b>Semua Menfess :</b> {db.all_menfess}\n'
+└<b>Bergabung :</b> {db.sign_up}
+""")
+# =========================================================== #
