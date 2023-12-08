@@ -39,7 +39,7 @@ pesan anda gagal terkirim. <b>silahkan klik button help bila butuh bantuan</b>
 """)
 
 # =========================================================== #
-status_handler = os.environ.get("STATUS_HANDLER", """
+status_msg = os.environ.get("STATUS_HANDLER", """
 b>❏ User Info:</b>\n'
 ├<b>Nama :</b> {db.mention}\n'
 ├<b>User ID :</b> <code>{db.id}</code>\n'
