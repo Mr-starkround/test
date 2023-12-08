@@ -21,6 +21,9 @@ async def start_handler(client: Client, msg: types.Message):
     buttons = [
         [           
             InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+            InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
         ],
@@ -53,10 +56,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}'    
     buttons = [
-        [
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
+        [          
             InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
