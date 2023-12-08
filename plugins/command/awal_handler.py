@@ -139,6 +139,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
 
 async def spill_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
+    db = Database(msg.from_user.id).get_data_pelanggan()
     first = msg.from_user.first_name
     last = msg.from_user.last_name
     fullname = f'{first} {last}' if last else first
