@@ -57,7 +57,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'└<b>Bergabung :</b> {db.sign_up}'    
 markup = InlineKeyboardMarkup(
         [InlineKeyboardButton('joss', callback_data='ggl'), 
-    )
+    ),
     await msg.reply(pesan, quote=True, parse_mode=enums.ParseMode.HTML, reply_markup=markup
     )
 
