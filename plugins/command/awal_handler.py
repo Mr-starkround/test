@@ -42,7 +42,7 @@ async def start_handler(client: Client, msg: types.Message):
         quote=True
     )
 
-async def status_handler(client: Client, msg: types.Message):
+async def status_handler(client: Client, msg: types.Message, query.CallbackQuery):
     helper = Helper(client, msg)
     mention = msg.from_user.mention
     db = Database(msg.from_user.id).get_data_pelanggan()
