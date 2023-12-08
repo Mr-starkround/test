@@ -18,6 +18,12 @@ class Database():
             "_id": self.user_id,
             "menfess": 0,
             "bot_status": True,
+            "talent": {},
+            "daddy_sugar": {},
+            "moansgirl": {},
+            "moansboy": {},
+            "gfrent": {},
+            "bfrent": {},
             "ban": {},
             "admin": [],
             "kirimchannel": {
@@ -37,7 +43,7 @@ class Database():
 
     async def tambah_pelanggan(self, data):
         mycol.insert_one(data)
-    
+
     async def hapus_pelanggan(self, user_id: int):
         mycol.delete_one({'_id': user_id})
         return
@@ -60,7 +66,7 @@ class Database():
         new = { "$set": { "menfess": 0 } }
         x = mycol.update_many({}, new)
         return x.modified_count
-        
+
     async def transfer_coin(self, ditranfer: int, diterima: int, coin_awal_target_full: int, id_target: int):
         coin_awal_user = self.get_data_pelanggan().coin_full
         a = mycol.update_one(
@@ -123,7 +129,7 @@ class Database():
             {"$set": {"status": f"banned_{str(id_banned)}"}
              })
         mycol.update_one(last_data, {"$set": {"ban": new_data}})
-    
+
     async def unban_user(self, id_banned: int, id_bot: int):
         last_data = {
             "ban": self.get_data_bot(id_bot).ban
@@ -136,7 +142,271 @@ class Database():
             {"$set": {"status": f"member_{str(id_banned)}"}}
         )
         mycol.update_one(last_data, {"$set": {"ban": new_data}})
-    
+
+    async def tambah_talent(self, id_talent: int, id_bot: int, nama: str):
+        last_data = {
+            "talent": self.get_data_bot(id_bot).talent
+        }
+        new_data = self.get_data_bot(id_bot).talent
+        new_data[str(id_talent)] = {
+            "nama": nama,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
+        }
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"talent_{str(id_talent)}"}
+             })
+        mycol.update_one(last_data, {"$set": {"talent": new_data}})
+
+    async def hapus_talent(self, id_talent: int, id_bot: int):
+        last_data = {
+            "talent": self.get_data_bot(id_bot).talent
+        }
+        new_data = self.get_data_bot(id_bot).talent
+        del new_data[str(id_talent)]
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"talent": new_data}})
+
+    async def rate_talent(self, id_talent: str, id_bot: int, coin: int):
+        last_data = {
+            "talent": self.get_data_bot(id_bot).talent
+        }
+        new_data = self.get_data_bot(id_bot).talent
+        new_data[id_talent].update({"rate": new_data[id_talent]['rate'] + 1})
+
+        last_coin = self.get_data_pelanggan().coin
+        mycol.update_one(
+            {"coin": f"{last_coin}_{self.user_id}"},
+            {"$set": {"coin": f"{coin}_{self.user_id}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"talent": new_data}})
+
+    async def tambah_sugar_daddy(self, id_talent: int, id_bot: int, nama: str):
+        last_data = {
+            "daddy_sugar": self.get_data_bot(id_bot).daddy_sugar
+        }
+        new_data = self.get_data_bot(id_bot).daddy_sugar
+        new_data[str(id_talent)] = {
+            "nama": nama,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
+        }
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"daddy sugar_{str(id_talent)}"}
+             })
+        mycol.update_one(last_data, {"$set": {"daddy_sugar": new_data}})
+
+    async def hapus_sugar_daddy(self, id_talent: int, id_bot: int):
+        last_data = {
+            "daddy_sugar": self.get_data_bot(id_bot).daddy_sugar
+        }
+        new_data = self.get_data_bot(id_bot).daddy_sugar
+        del new_data[str(id_talent)]
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"daddy_sugar": new_data}})
+
+    async def rate_sugar_daddy(self, id_talent: str, id_bot: int, coin: int):
+        last_data = {
+            "daddy_sugar": self.get_data_bot(id_bot).daddy_sugar
+        }
+        new_data = self.get_data_bot(id_bot).daddy_sugar
+        new_data[id_talent].update({"rate": new_data[id_talent]['rate'] + 1})
+
+        last_coin = self.get_data_pelanggan().coin
+        mycol.update_one(
+            {"coin": f"{last_coin}_{self.user_id}"},
+            {"$set": {"coin": f"{coin}_{self.user_id}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"daddy_sugar": new_data}})
+
+    async def tambah_moans_girl(self, id_talent: int, id_bot: int, nama: str):
+        last_data = {
+            "moansgirl": self.get_data_bot(id_bot).moansgirl
+        }
+        new_data = self.get_data_bot(id_bot).moansgirl
+        new_data[str(id_talent)] = {
+            "nama": nama,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
+        }
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"moans girl_{str(id_talent)}"}
+             })
+        mycol.update_one(last_data, {"$set": {"moansgirl": new_data}})
+
+    async def hapus_moans_girl(self, id_talent: int, id_bot: int):
+        last_data = {
+            "moansgirl": self.get_data_bot(id_bot).moansgirl
+        }
+        new_data = self.get_data_bot(id_bot).moansgirl
+        del new_data[str(id_talent)]
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"moansgirl": new_data}})
+
+    async def rate_moans_girl(self, id_talent: str, id_bot: int, coin: int):
+        last_data = {
+            "moansgirl": self.get_data_bot(id_bot).moansgirl
+        }
+        new_data = self.get_data_bot(id_bot).moansgirl
+        new_data[id_talent].update({"rate": new_data[id_talent]['rate'] + 1})
+
+        last_coin = self.get_data_pelanggan().coin
+        mycol.update_one(
+            {"coin": f"{last_coin}_{self.user_id}"},
+            {"$set": {"coin": f"{coin}_{self.user_id}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"moansgirl": new_data}})
+
+    async def tambah_moans_boy(self, id_talent: int, id_bot: int, nama: str):
+        last_data = {
+            "moansboy": self.get_data_bot(id_bot).moansboy
+        }
+        new_data = self.get_data_bot(id_bot).moansboy
+        new_data[str(id_talent)] = {
+            "nama": nama,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
+        }
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"moans boy_{str(id_talent)}"}
+             })
+        mycol.update_one(last_data, {"$set": {"moansboy": new_data}})
+
+    async def hapus_moans_boy(self, id_talent: int, id_bot: int):
+        last_data = {
+            "moansboy": self.get_data_bot(id_bot).moansboy
+        }
+        new_data = self.get_data_bot(id_bot).moansboy
+        del new_data[str(id_talent)]
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"moansboy": new_data}})
+
+    async def rate_moans_boy(self, id_talent: str, id_bot: int, coin: int):
+        last_data = {
+            "moansboy": self.get_data_bot(id_bot).moansboy
+        }
+        new_data = self.get_data_bot(id_bot).moansboy
+        new_data[id_talent].update({"rate": new_data[id_talent]['rate'] + 1})
+
+        last_coin = self.get_data_pelanggan().coin
+        mycol.update_one(
+            {"coin": f"{last_coin}_{self.user_id}"},
+            {"$set": {"coin": f"{coin}_{self.user_id}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"moansboy": new_data}})
+
+    async def tambah_gf_rent(self, id_talent: int, id_bot: int, nama: str):
+        last_data = {
+            "gfrent": self.get_data_bot(id_bot).gfrent
+        }
+        new_data = self.get_data_bot(id_bot).gfrent
+        new_data[str(id_talent)] = {
+            "nama": nama,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
+        }
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"girlfriend rent_{str(id_talent)}"}
+             })
+        mycol.update_one(last_data, {"$set": {"gfrent": new_data}})
+
+    async def hapus_gf_rent(self, id_talent: int, id_bot: int):
+        last_data = {
+            "gfrent": self.get_data_bot(id_bot).gfrent
+        }
+        new_data = self.get_data_bot(id_bot).gfrent
+        del new_data[str(id_talent)]
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"gfrent": new_data}})
+
+    async def rate_gf_rent(self, id_talent: str, id_bot: int, coin: int):
+        last_data = {
+            "gfrent": self.get_data_bot(id_bot).gfrent
+        }
+        new_data = self.get_data_bot(id_bot).gfrent
+        new_data[id_talent].update({"rate": new_data[id_talent]['rate'] + 1})
+
+        last_coin = self.get_data_pelanggan().coin
+        mycol.update_one(
+            {"coin": f"{last_coin}_{self.user_id}"},
+            {"$set": {"coin": f"{coin}_{self.user_id}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"gfrent": new_data}})
+
+    async def tambah_bf_rent(self, id_talent: int, id_bot: int, nama: str):
+        last_data = {
+            "bfrent": self.get_data_bot(id_bot).bfrent
+        }
+        new_data = self.get_data_bot(id_bot).bfrent
+        new_data[str(id_talent)] = {
+            "nama": nama,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
+        }
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"boyfriend rent_{str(id_talent)}"}
+             })
+        mycol.update_one(last_data, {"$set": {"bfrent": new_data}})
+
+    async def hapus_bf_rent(self, id_talent: int, id_bot: int):
+        last_data = {
+            "bfrent": self.get_data_bot(id_bot).bfrent
+        }
+        new_data = self.get_data_bot(id_bot).bfrent
+        del new_data[str(id_talent)]
+        last_status = self.get_data_pelanggan().status_full
+        mycol.update_one(
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"bfrent": new_data}})
+
+    async def rate_bf_rent(self, id_talent: str, id_bot: int, coin: int):
+        last_data = {
+            "bfrent": self.get_data_bot(id_bot).bfrent
+        }
+        new_data = self.get_data_bot(id_bot).bfrent
+        new_data[id_talent].update({"rate": new_data[id_talent]['rate'] + 1})
+
+        last_coin = self.get_data_pelanggan().coin
+        mycol.update_one(
+            {"coin": f"{last_coin}_{self.user_id}"},
+            {"$set": {"coin": f"{coin}_{self.user_id}"}}
+        )
+        mycol.update_one(last_data, {"$set": {"bfrent": new_data}})
+
     async def bot_handler(self, status: str):
         if status == 'on' or status == '<on>':
             bot_status = True
@@ -220,7 +490,7 @@ class Database():
         user_id = []
         for doc in mycol.find():
             user_id.append(doc['_id'])
-        
+
         return get_pelanggan(user_id)
 
     def get_data_pelanggan(self):
@@ -270,6 +540,12 @@ class data_bot():
         super().__init__()
         self.id = args['_id']
         self.bot_status = args['bot_status']
+        self.talent = dict(args['talent'])
+        self.daddy_sugar = dict(args['daddy_sugar'])
+        self.moansgirl = dict(args['moansgirl'])
+        self.moansboy = dict(args['moansboy'])
+        self.gfrent = dict(args['gfrent'])
+        self.bfrent = dict(args['bfrent'])
         self.ban = dict(args['ban'])
         self.admin = list(args['admin'])
         self.kirimchannel = kirim_channel(dict(args['kirimchannel']))
